@@ -170,6 +170,8 @@ const (
 	ResourceFlowRelTable Name = "resource_flow_rel"
 	// ResourceFlowLockTable is resource_flow_lock table's name.
 	ResourceFlowLockTable Name = "resource_flow_lock"
+	// LimitRuleTable is limit_rule table's name.
+	LimitRuleTable Name = "limit_rule"
 )
 
 // Validate whether the table name is valid or not.
@@ -255,6 +257,7 @@ var TableMap = map[Name]struct{}{
 	TargetGroupListenerRuleRelTable: {},
 	ResourceFlowRelTable:            {},
 	ResourceFlowLockTable:           {},
+	LimitRuleTable:                  {},
 }
 
 // Register 注册表名

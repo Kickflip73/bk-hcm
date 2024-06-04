@@ -57,6 +57,8 @@ type Client struct {
 	ArgsTpl        *ArgsTplClient
 	LoadBalancer   *LoadBalancerClient
 	SGCommonRel    *SGCommonRelClient
+
+	LimitRule *LimitRuleClient
 }
 
 type restClient struct {
@@ -97,5 +99,7 @@ func NewClient(client rest.ClientInterface) *Client {
 		ArgsTpl:        NewCloudArgumentTemplateClient(client),
 		LoadBalancer:   NewLoadBalancerClient(client),
 		SGCommonRel:    NewCloudSGCommonRelClient(client),
+
+		LimitRule: NewLimitRuleClient(client),
 	}
 }

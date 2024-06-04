@@ -23,6 +23,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"hcm/cmd/data-service/service/limit"
 	"net"
 	"net/http"
 	"strconv"
@@ -51,8 +52,8 @@ import (
 	"hcm/cmd/data-service/service/cloud/region"
 	resourcegroup "hcm/cmd/data-service/service/cloud/resource-group"
 	routetable "hcm/cmd/data-service/service/cloud/route-table"
-	sgcomrel "hcm/cmd/data-service/service/cloud/security-group-common-rel"
 	"hcm/cmd/data-service/service/cloud/security-group"
+	sgcomrel "hcm/cmd/data-service/service/cloud/security-group-common-rel"
 	sgcvmrel "hcm/cmd/data-service/service/cloud/security-group-cvm-rel"
 	subaccount "hcm/cmd/data-service/service/cloud/sub-account"
 	sync "hcm/cmd/data-service/service/cloud/sync"
@@ -222,6 +223,7 @@ func (s *Service) apiSet() *restful.Container {
 	cert.InitService(capability)
 	loadbalancer.InitService(capability)
 	sgcomrel.InitService(capability)
+	limit.InitService(capability)
 
 	return restful.NewContainer().Add(capability.WebService)
 }
