@@ -22,6 +22,7 @@ package dao
 
 import (
 	"fmt"
+	"hcm/pkg/dal/dao/limit"
 	"strings"
 	"time"
 
@@ -121,6 +122,7 @@ type Set interface {
 	ResourceFlowRel() resflow.ResourceFlowRelInterface
 	ResourceFlowLock() resflow.ResourceFlowLockInterface
 	SGCommonRel() sgcomrel.Interface
+	LimitRule() limit.LimitRule
 
 	Txn() *Txn
 }
@@ -624,5 +626,14 @@ func (s *set) ResourceFlowLock() resflow.ResourceFlowLockInterface {
 func (s *set) SGCommonRel() sgcomrel.Interface {
 	return &sgcomrel.Dao{
 		Orm: s.orm,
+	}
+}
+
+// LimitRule return limit rule dao.
+func (s *set) LimitRule() limit.LimitRule {
+	return &limit.LimitRuleDao{
+		Orm:   s.orm,
+		IDGen: s.idGen,
+		Audit: s.audit,
 	}
 }
